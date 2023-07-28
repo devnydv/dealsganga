@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/details.css">
+  <title>details</title>
+</head>
+
+<body>
+  <div id="menu">
+    <img onclick="notvisi()" src="icons/menu_black_24dp.svg" alt="&#9776;">
+    <p><a href="/"> Deals Ganaga</a></p>
+  </div>
+
+  <nav id="visible" class="notvisi">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/site.html?name=amazon">Amazon</a> </li>
+      <li><a href="/site.html?name=flipkart">flipkart</a></li>
+      <li><a href="/site.html?name=ajio">Ajio</a></li>
+      <li><a href="/site.html?name=myntra">Myntra</a></li>
+    </ol>
+  </nav>
+
+
+  <!-- <h1>Shop at Lowest Price from Popular Stores.</h1>  -->
+  <div id="main">
+
+    <!--creating dynamic h2-->
+<!--creating dynamic child_inside-->
+    
+
+
+  </div>
+  
+</body>
+<script>
+  let param = new URLSearchParams(document.location.search);
+  let sitename = param.get('site');
+  let category = param.get('category');
+  let title = param.get('title');
+  let name = param.get('name');
+  console.log(sitename, category, title, name);
+  async function getdata() {
+    let res = await fetch(`https://payme-bce76.firebaseio.com/deals/${sitename}/category/${category}/${title}/${name}.json`)
+    let data = await res.json();
+    console.log(data)
+
+    let main = document.getElementById('main');
+    //let headertxt = `<h2>${title}</h2>`
+    //main.insertAdjacentHTML("beforeend", headertxt)
+    let childin = document.createElement('div')
+
+    childin.className = 'child_inside';
+    let contenthtml = `
+  <div class= "child">
+    <div class="imgdiv">
+       <img src="${data["image"]}" alt="">
+    </div>
+    <div class="details">
+      <h1 class="title">Lowest priced ${name} from ${sitename}</h1>
+      <p class="prc">${data["price"]}</p>
+      <button><a href="${data["link"]}" target="_blanck">View Items on ${sitename}</a></button>
+    </div>
+    
+  </div>
+  `
+  let childdetails = document.createElement('div')
+
+    childdetails.className = 'child_inside';
+  let details= `
+  <div class= "child">
+  <div class="details">
+      <h4 class="title">Guide to make a purchase.</h4>
+      <p class="prc">1. Click on the view items link to visit the website.</p>
+      <p class="prc">2. Chose the item that you want to buy.</p>
+      <p class="prc">3. Add the item ti your cart.</p>
+      <p class="prc">4. Make you purchase</p>
+      <p class="prc">Note: The items listed on the site are the lowest priced do check its rating and quality before purchase.</p>
+     <!-- <button><a href="site.html?name=amazon" >Amazon</a></button>
+      <button><a href="site.html?name=flipkart">Flipkart</a></button>
+      <button><a href="site.html?name=ajio">Ajio</a></button>
+      <button><a href="site.html?name=myntra">Myntra</a></button> -->
+      
+    </div>
+  </div>
+  
+  `
+    let parser = new DOMParser();
+    let elem = parser.parseFromString(contenthtml, 'text/html').body.firstChild;
+    let detailshtml= parser.parseFromString(details, 'text/html').body.firstChild;
+    childin.appendChild(elem);
+    childdetails.appendChild(detailshtml);
+    
+
+
+//console.log(childdetails)
+
+    main.appendChild(childin);
+    main.appendChild(childdetails);
+    let headertxt = `<h2>${'Recomandations'}</h2>`
+    main.insertAdjacentHTML("beforeend", headertxt)
+
+  }
+  getdata()
+
+
+
+
+
+
+  async function main() {
+    let res = await fetch(`https://payme-bce76.firebaseio.com/deals/${sitename}.json`);
+    let data = await res.json();
+
+    let main = document.getElementById('main');
+  let header = Object.keys(data['category'][category]);
+    header.forEach(headname => {
+      let headertxt = `<h2>${"recomandation"}</h2>
+
+`
+      //console.log(data['category'][cat][headname]);
+      //main.insertAdjacentHTML('beforeend', headertxt);
+
+      recomand = document.createElement('div')
+      recomand.className = 'child_recomand';
+      //console.log(childin)
+      
+
+      contentkey = Object.keys(data['category'][category][headname]);
+      contentkey.forEach(contentval => {
+        let childdata = data['category'][category][headname][contentval]
+        console.log(childdata);
+        let lcat = category.split(' ').join('+');
+        let lheadname = headname.split(' ').join('+');
+        let lcontentval = contentval.split(' ').join('+');
+        let recomandhtml = `
+  <div class= "child">
+    <div class="imgdiv-reco">
+       <img src="${childdata["image"]}" alt="">
+    </div>
+    <div class="details">
+      <p class="title">${contentval}</p>
+      <p class="prc">${childdata["price"]}</p>
+      <button><a href="details.html?site=${sitename}&category=${lcat}&title=${lheadname}&name=${lcontentval}">View Details</a></button>
+    </div>
+    
+  </div>
+  `
+        let parser = new DOMParser();
+        let html = parser.parseFromString(recomandhtml, 'text/html').body.firstChild
+        recomand.appendChild(html)
+        //console.log(childin)
+        console.log(recomand)
+       
+      })
+      
+      main.appendChild(recomand)
+    });
+
+    //console.log(main)
+
+  }
+  main()
+
+
+
+
+</script>
+<script>
+  function notvisi() {
+
+    let btn = document.getElementById('visible');
+
+    btn.classList.toggle('notvisi');
+
+  }
+</script>
+
+</html>

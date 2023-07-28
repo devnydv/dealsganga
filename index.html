@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deals Ganaga Every product at lowest price</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div id="menu">
+    <img onclick="notvisi()" src="icons/menu_black_24dp.svg" alt="&#9776;">
+    <p><a href="/"> Deals Ganaga</a></p>
+  </div>
+
+  <nav id="visible" class="notvisi">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/site.html?name=amazon">Amazon</a> </li>
+      <li><a href="/site.html?name=flipkart">Flipkart</a></li>
+      <li><a href="/site.html?name=ajio">Ajio</a></li>
+      <li><a href="/site.html?name=myntra">Myntra</a></li>
+    </ol>
+  </nav>
+  <div id="cat">
+    <!-- inserting data dynamicly -->
+  </div>
+
+  <h1>Shop at Lowest Price from Popular Stores.</h1>
+
+  <div id="main">
+
+    <!--creating dynamic h2-->
+
+    <div class="child_inside">
+      <!--creating dynamic child_inside-->
+
+
+    </div>
+
+
+  </div>
+</body>
+<script>
+  async function main() {
+    let res = await fetch(`https://payme-bce76.firebaseio.com/deals/home.json`);
+    let data = await res.json();
+    console.log(data);
+
+    let cat = document.getElementById("cat");
+    let arr = Object.keys(data['category']);
+    console.log(arr)
+    arr.forEach(catname => {
+      let upcatname = catname[0].toUpperCase() + catname.slice(1);
+      console.log(upcatname)
+      let catdata = `<a href="/site.html?name=${catname}">${upcatname}</a>`
+      cat.insertAdjacentHTML("beforeend", catdata);
+
+      let main = document.getElementById('main');
+      let headertxt = `<h2>Top category from ${upcatname}</h2>`
+      main.insertAdjacentHTML("beforeend", headertxt);
+      let childin = document.createElement('div')
+
+      childin.className = 'child_inside';
+
+      let contentkey = Object.keys(data['category'][catname]['items'])
+      //console.log(contentkey)
+      contentkey.forEach(contentval => {
+        let childdata = data['category'][catname]['items'][contentval];
+        let category = childdata["category"]
+        let title = childdata["title"]
+
+        category.split(' ').join("+");
+        title.split(' ').join("+");
+        console.log(title);
+        let contenthtml = `
+  <div class= "child">
+    <div class="imgdiv">
+       <img src="${childdata["image"]}" alt="">
+    </div>
+    <div class="details">
+      <p class="title">${contentval}</p>
+      <p class="prc">${childdata["price"]}</p>
+      <button><a href="/details.html?site=${catname}&category=${category}&title=${title}&name=${contentval}">View Details</a></button>
+    </div>
+    
+  </div>
+  `
+
+        let parser = new DOMParser();
+        let elem = parser.parseFromString(contenthtml, 'text/html').body.firstChild
+        childin.appendChild(elem)
+        //console.log(childin)
+      })
+
+
+
+      main.appendChild(childin);
+
+    });
+
+
+  }
+  main()
+
+
+</script>
+<script>
+
+  function notvisi() {
+
+    let btn = document.getElementById('visible');
+
+    btn.classList.toggle('notvisi');
+
+  }
+</script>
+
+</html>
