@@ -17,10 +17,10 @@
   <nav id="visible" class="notvisi">
     <ol>
       <li><a href="/">Home</a></li>
-      <li><a href="/site.html?name=amazon">Amazon</a> </li>
-      <li><a href="/site.html?name=flipkart">Flipkart</a></li>
-      <li><a href="/site.html?name=ajio">Ajio</a> </li>
-      <li><a href="/site.html?name=myntra">Myntra</a> </li>
+      <li><a href="site.html?name=amazon">Amazon</a> </li>
+      <li><a href="site.html?name=flipkart">Flipkart</a></li>
+      <li><a href="site.html?name=ajio">Ajio</a> </li>
+      <li><a href="site.html?name=myntra">Myntra</a> </li>
     </ol>
   </nav>
   <div id="cat">
@@ -64,7 +64,7 @@
     arr.forEach(catname => {
       let ncatname = catname.split(' ').join('+')
 
-      let catdata = `<a href="/site.html?name=${sitename}&category=${ncatname}">${catname}</a>`
+      let catdata = `<a href="site.html?name=${sitename}&category=${ncatname}">${catname}</a>`
       cate.insertAdjacentHTML("beforeend", catdata);
 
     });
