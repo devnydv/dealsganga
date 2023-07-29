@@ -1,33 +1,35 @@
 <!DOCTYPE html>
+<html lang="en">
 <html>
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Deals Ganaga Every product at lowest price</title>
+  <title>LowonCost: Every product at lowest price</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="icons/icon.webp" type="image/x-icon">
+  <link rel="apple-touch-icon" href="icons/icon.webp">
 </head>
 
 <body>
   <div id="menu">
-    <img onclick="notvisi()" src="icons/menu_black_24dp.svg" alt="&#9776;">
-    <p><a href="/"> Deals Ganaga</a></p>
+    <img onclick="notvisi()" src="icons/menu_black_24dp.svg" alt="menu-lines">
+    <p><a href="/">Lowoncost</a></p>
   </div>
 
   <nav id="visible" class="notvisi">
     <ol>
-      <li><a href="/">Home</a></li>
-      <li><a href="site.html?name=amazon">Amazon</a> </li>
-      <li><a href="site.html?name=flipkart">Flipkart</a></li>
-      <li><a href="site.html?name=ajio">Ajio</a></li>
-      <li><a href="site.html?name=myntra">Myntra</a></li>
+      <li><a href="/" title="Home">Home</a></li>
+      <li><a href="site.html?name=amazon" title="Amazon">Amazon</a> </li>
+      <li><a href="site.html?name=flipkart" title="Flipkart">Flipkart</a></li>
+      <li><a href="site.html?name=ajio" title="Ajio">Ajio</a></li>
+      <li><a href="site.html?name=myntra" title="Myntra">Myntra</a></li>
     </ol>
   </nav>
   <div id="cat">
     <!-- inserting data dynamicly -->
   </div>
 
-  <h1>Shop at Lowest Price from Popular Stores.</h1>
+  <h1>Lowoncost: Every product at lowest price</h1>
 
   <div id="main">
 
@@ -54,7 +56,7 @@
     arr.forEach(catname => {
       let upcatname = catname[0].toUpperCase() + catname.slice(1);
       console.log(upcatname)
-      let catdata = `<a href="site.html?name=${catname}">${upcatname}</a>`
+      let catdata = `<a href="site.html?name=${catname}" title="${catname}">${upcatname}</a>`
       cat.insertAdjacentHTML("beforeend", catdata);
 
       let main = document.getElementById('main');
@@ -71,18 +73,20 @@
         let category = childdata["category"]
         let title = childdata["title"]
 
-        category.split(' ').join("+");
-        title.split(' ').join("+");
+
+        let ncategory=category.split(' ').join("+");
+        let ntitle=title.split(' ').join("+");
+        let ncontentval= contentval.split(' ').join("+");
         console.log(title);
         let contenthtml = `
   <div class= "child">
     <div class="imgdiv">
-       <img src="${childdata["image"]}" alt="">
+       <img src="${childdata["image"]}" alt=${contentval}>
     </div>
     <div class="details">
       <p class="title">${contentval}</p>
       <p class="prc">${childdata["price"]}</p>
-      <button><a href="details.html?site=${catname}&category=${category}&title=${title}&name=${contentval}">View Details</a></button>
+      <button><a href="details.html?site=${catname}&category=${ncategory}&title=${ntitle}&name=${ncontentval}" title="View details of ${contentval}">View Details</a></button>
     </div>
     
   </div>
@@ -95,8 +99,10 @@
       })
 
 
-
+      
       main.appendChild(childin);
+      let sitelink = `<div class="sitelink"><a href="site.html?name=${catname}" title="See More from ${catname}">See More from ${upcatname}</a></div>`
+      main.insertAdjacentHTML("beforeend", sitelink);
 
     });
 
