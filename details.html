@@ -46,7 +46,13 @@
   let category = param.get('category');
   let title = param.get('title');
   let name = param.get('name');
-  console.log(sitename, category, title, name);
+
+  //seo for the site creation of meta and title tag
+  document.title = ` Lowest priced ${name} from ${sitename} `;
+  let meta = document.querySelector('meta[name="description"]');
+  meta.setAttribute("content", `Best link to buy ${name} from ${sitename} . Just click on link and see the lowest priced products`);
+
+  //console.log(sitename, category, title, name);
   async function getdata() {
     let res = await fetch(`https://payme-bce76.firebaseio.com/deals/${sitename}/category/${category}/${title}/${name}.json`)
     let data = await res.json();
@@ -135,7 +141,7 @@
       contentkey = Object.keys(data['category'][category][headname]);
       contentkey.forEach(contentval => {
         let childdata = data['category'][category][headname][contentval]
-        console.log(childdata);
+        //console.log(childdata);
         let lcat = category.split(' ').join('+');
         let lheadname = headname.split(' ').join('+');
         let lcontentval = contentval.split(' ').join('+');
@@ -156,7 +162,7 @@
         let html = parser.parseFromString(recomandhtml, 'text/html').body.firstChild
         recomand.appendChild(html)
         //console.log(childin)
-        console.log(recomand)
+        //console.log(recomand)
        
       })
       
