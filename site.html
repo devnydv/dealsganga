@@ -162,13 +162,15 @@ arra = contentkey;
 
       })
 //inser data into obj for schema///////////////
+     let lheadname = headname.split(' ').join('+');
         let loop= arra.length
         for(let i=0; i<=loop-1; i++){
+         let rename= arra[i].split(' ').join('+')
         obj.itemListElement[i] = {
           "@type": "ListItem",
           "position": i,
-          "name": `${arra[i]}`,
-          "url": `https://lowoncost.xyz/details.html?site=${sitename}&category=${lcat}&title=${headname}&name=${arra[i]}`
+          "name": `${rename}`,
+          "url": `https://lowoncost.xyz/details.html?site=${sitename}&category=${lcat}&title=${lheadname}&name=${rename}`
         };
        
       }
