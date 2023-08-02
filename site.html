@@ -72,6 +72,38 @@
     main.insertAdjacentHTML('beforebegin', h1);
     let arr = Object.keys(data['category']);
     //console.log(arr)
+
+//breadcrumbs code for the site
+let lcat = cat.split(' ').join('+');
+let src= document.createElement('script');
+let schema= 
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://lowoncost.xyz/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": `${sitename}`,
+        "item": `https://lowoncost.xyz/?name=${sitename}&category=${cat}`
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": `Lowest priced ${cat} from ${sitename}`
+      }]
+    }
+src.setAttribute('type', 'application/ld+json');
+src.textContent = JSON.stringify(schema);
+document.head.appendChild(src);
+
+// edn of breadcrumbs code for the site
+
+
+   
     arr.forEach(catname => {
       let ncatname = catname.split(' ').join('+')
 
@@ -96,7 +128,7 @@
       contentkey.forEach(contentval => {
         let childdata = data['category'][cat][headname][contentval]
         //console.log(conte)
-        let lcat = cat.split(' ').join('+');
+        // let lcat = cat.split(' ').join('+');
         let lheadname = headname.split(' ').join('+');
         let lcontentval = contentval.split(' ').join('+');
         let contenthtml = `
