@@ -95,13 +95,14 @@ ol li a{
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
-h1{
+#head{
   text-align: center;
-  margin: 8px ;
   font-size: 22px;
 }
-#main h1, h2{
+#main  h2{
   text-align: center;
   font-size: 20px;
   /* box-shadow: 2px 2px grey; */
@@ -112,7 +113,7 @@ h1{
 
 .child_inside {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   justify-items: center;
   margin-left: auto;
   margin-right: auto;
@@ -120,17 +121,23 @@ h1{
   
 
 }
-
+.child a{
+  color: black;
+  text-decoration: none;
+}
 .child {
   border: 1px solid lightgrey;
   box-shadow: 2px 2px grey;
   background-color: white;
   border-radius: 10px;
-  display: flex;
-  width: 95% ;
-  margin: 5px
+  /* display: flex; */
+  
+  width: 94% ;
+  margin: 8px
 }
-
+.child:hover{
+  background-color: rgb(241, 240, 240);
+}
 #main .child_inside .child .details .prc {
  margin: 5px 0px;
  font-weight: 400;
@@ -147,9 +154,8 @@ font-weight: bolder;
 }
 .imgdiv {
   display: flex;
-  /* background-color: red; */
   margin: 5px;
-  
+  padding: 5px;
   align-items: center;
   justify-content: center;
   min-height: 160px;
@@ -158,31 +164,108 @@ font-weight: bolder;
   /* width: 120px; */
 }
 
-.imgdiv img {
+.child_inside .imgdiv img {
  width: 100px;
  margin: 5px;
+ /* padding: 2px; */
   text-align: center;
 }
 
-.details {
+.child_inside .details {
   margin: 10px;
   padding: 5px 0px;
 
 
 }
+/* code for details page ....................................................................*/    
+#main .child_details h1{
+  margin: 10px 0px;
+  font-size: 22px;
+}
+#main .child_details .child .details .prc, #main .child_description .child .details .prc{
+  margin: 5px 5px;
+  font-weight: 400;
+ }
+ 
+ #main .child_details .child{
+  width: inherit;
+ }
+ #main .child_details .child .details button {
+  padding: 5px 8px;
+  margin: 8px 0px;
+  background-color: rgb(133, 238, 46);
+  font-size: 16px;
+ }
 
+
+.child_details .child{
+  display: flex;
+  border: 1px solid lightgrey;
+    box-shadow: 2px 2px grey;
+    background-color: white;
+    border-radius: 10px;
+    width: 95% ;
+    margin: 5px;
+}
+
+.child_details .child .imgdiv-reco {
+  display: flex;
+  /* background-color: red; */
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  width: 250px;
+  /* width: 270px; */
+  overflow: hidden;
+  
+}
+
+.imgdiv-reco img {
+  max-width: 80%;
+  max-height: 250px;
+ 
+ margin: 5px;
+  text-align: center;
+}
+
+.child_description .child{
+  width: inherit;
+}
 .details .title {
-
+ 
   font-size: 18px;
   font-weight: bolder;
 }
+
+#main .sitelink{
+  
+  margin: 8px;
+  
+  
+}
+#main .sitelink a{
+  padding: 4px;
+  font-weight: bold;
+  margin: 10px;
+  
+}
+
+
+
+
+
+
+
 @media(max-width: 800px) {
   nav{
     width:80%;
   }
-  #child_inside{
-    grid-template-columns: repeat(2 1fr);
-    width: 90%;
+  .child_inside{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+    width: 95%;
     justify-content: center;
   }
 }
@@ -193,6 +276,13 @@ font-weight: bolder;
     width: 100%;
     padding: 0px;
   }
+  .child_inside{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    
+    width: 98%;
+    justify-content: center;
+  }
 nav{
   width:80%;
 }
@@ -202,10 +292,21 @@ nav{
     width: 95%;
 
   }
+
+
 }
 @media(max-width: 500px) {
   .child{
     display:block;
     /* text-align: center; */
   }
+
+  .child_details .child{
+    display: block;
+    text-align: center;
+}
+
+.child_details .child .imgdiv-reco{
+width: inherit;
+}
 }
