@@ -53,39 +53,41 @@
   let meta = document.querySelector('meta[name="description"]');
   meta.setAttribute("content", `Best link to buy ${name} from ${sitename} . Just click on link and see the lowest priced products`);
 
-  //console.log(sitename, category, title, name);
+
+  console.log(sitename, category, title, name);
   async function getdata() {
     let res = await fetch(`https://payme-bce76.firebaseio.com/deals/${sitename}/category/${category}/${title}/${name}.json`)
     let data = await res.json();
-    //console.log(data)
+    console.log(data)
 
     let main = document.getElementById('main');
     //let headertxt = `<h2>${title}</h2>`
     //main.insertAdjacentHTML("beforeend", headertxt)
     let childin = document.createElement('div')
 
-    childin.className = 'child_inside';
+    childin.className = 'child_details';
     let contenthtml = `
   <div class= "child">
-    <div class="imgdiv">
+    
+    <div class="imgdiv-reco">
        <img src="${data["image"]}" alt="${name}">
     </div>
     <div class="details">
       <h1 class="title">Lowest priced ${name} from ${sitename}</h1>
       <p class="prc">${data["price"]}</p>
-      <button><a href="${data["link"]}" target="_blanck" title="View Items on ${sitename}">View Items on ${sitename}</a></button>
+     <button><a href="${data["link"]}" target="_blanck" title="View Items on ${sitename}">View Items on ${sitename}</a></button>
     </div>
-    
+  </a>
   </div>
   `
   let childdetails = document.createElement('div')
 
-    childdetails.className = 'child_inside';
+    childdetails.className = 'child_description';
   let details= `
   <div class= "child">
   <div class="details">
       <h2 class="title">Guide to make a purchase.</h2>
-      <p class="prc">1. Click on the view items link to visit the website.</p>
+      <p class="prc"> 1. Click on the view items link to visit the website.</p>
       <p class="prc">2. Chose the item that you want to buy.</p>
       <p class="prc">3. Add the item to your cart.</p>
       <p class="prc">4. Make you purchase</p>
@@ -135,26 +137,28 @@
       //main.insertAdjacentHTML('beforeend', headertxt);
 
       recomand = document.createElement('div')
-      recomand.className = 'child_recomand';
+      recomand.className = 'child_inside';
       //console.log(childin)
       
 
       contentkey = Object.keys(data['category'][category][headname]);
       contentkey.forEach(contentval => {
         let childdata = data['category'][category][headname][contentval]
-        //console.log(childdata);
+        console.log(childdata);
         let lcat = category.split(' ').join('+');
         let lheadname = headname.split(' ').join('+');
         let lcontentval = contentval.split(' ').join('+');
         let recomandhtml = `
   <div class= "child">
-    <div class="imgdiv-reco">
+    <a href="details.html?site=${sitename}&category=${lcat}&title=${lheadname}&name=${lcontentval}" title="View Details of ${contentval}">
+    <div class="imgdiv">
        <img src="${childdata["image"]}" alt="${contentval}">
     </div>
     <div class="details">
       <p class="title">${contentval}</p>
       <p class="prc">${childdata["price"]}</p>
-      <button><a href="details?site=${sitename}&category=${lcat}&title=${lheadname}&name=${lcontentval}" title="View Details of ${contentval}">View Details</a></button>
+     <!-- <button><a href="details?site=${sitename}&category=${lcat}&title=${lheadname}&name=${lcontentval}" title="View Details of ${contentval}">View Details</a></button> -->
+    </a>
     </div>
     
   </div>
@@ -163,7 +167,7 @@
         let html = parser.parseFromString(recomandhtml, 'text/html').body.firstChild
         recomand.appendChild(html)
         //console.log(childin)
-        //console.log(recomand)
+        console.log(recomand)
        
       })
       
