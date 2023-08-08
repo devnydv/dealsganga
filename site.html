@@ -76,7 +76,7 @@
 
     let cate = document.getElementById("cat");
     let main = document.getElementById('main');
-    let h1 = `<h1>Best Deals on ${cat} from ${sitename}</h1>`
+    let h1 = `<h1 id="head">Best Deals on ${cat} from ${sitename}</h1>`
     main.insertAdjacentHTML('beforebegin', h1);
     let arr = Object.keys(data['category']);
     //console.log(arr)
