@@ -63,41 +63,45 @@
 
     let cat = document.getElementById("cat");
     let arr = Object.keys(data['category']);
-    //console.log(arr)
+    console.log(arr)
     arr.forEach(catname => {
       let upcatname = catname[0].toUpperCase() + catname.slice(1);
-      console.log(upcatname)
-      let catdata = `<a href="site?name=${catname}" title="${catname}">${upcatname}</a>`
+      //console.log(upcatname);
+      let catdata = `<a href="site.html?name=${catname}" title="${catname}">${upcatname}</a>`
       cat.insertAdjacentHTML("beforeend", catdata);
 
       let main = document.getElementById('main');
       let headertxt = `<h2>Top category from ${upcatname}</h2>`
       main.insertAdjacentHTML("beforeend", headertxt);
-      let childin = document.createElement('div')
+      let childin = document.createElement('div');
 
       childin.className = 'child_inside';
 
-      let contentkey = Object.keys(data['category'][catname]['items'])
-      //console.log(contentkey)
+      let contentkey = Object.keys(data['category'][catname]['category']);
+      //console.log(contentkey);
       contentkey.forEach(contentval => {
-        let childdata = data['category'][catname]['items'][contentval];
-        let category = childdata["category"]
-        let title = childdata["title"]
+        console.log(contentval);
+        let childdata = data['category'][catname]["category"][contentval];
+        console.log( childdata)
+        let category = contentval
+        let title = contentval
 
 
-        let ncategory=category.split(' ').join("+");
-        let ntitle=title.split(' ').join("+");
-        let ncontentval= contentval.split(' ').join("+");
-        //console.log(title);
+        let ncategory = category.split(' ').join("+");
+        let ntitle = title.split(' ').join("+");
+        let ncontentval = contentval.split(' ').join("+");
+        console.log(title);
         let contenthtml = `
   <div class= "child">
+    <a href="site.html?name=${catname}&category=${ncategory}" title="View details of ${contentval}">
     <div class="imgdiv">
        <img src="${childdata["image"]}" alt=${contentval}>
     </div>
     <div class="details">
       <p class="title">${contentval}</p>
-      <p class="prc">${childdata["price"]}</p>
-      <button><a href="details?site=${catname}&category=${ncategory}&title=${ntitle}&name=${ncontentval}" title="View details of ${contentval}">View Details</a></button>
+      
+      <!-- <button><a href="site.html?site=${catname}&category=${ncategory}" title="View details of ${contentval}">View Details</a></button> -->
+    </a>
     </div>
     
   </div>
@@ -110,9 +114,10 @@
       })
 
 
-      
+
       main.appendChild(childin);
-      let sitelink = `<div class="sitelink"><a href="site?name=${catname}" title="See More from ${catname}">See More from ${upcatname}</a></div>`
+      let sitelink = `<div class="sitelink">
+        <a href="site.html?name=${catname}" title="See More from ${catname}">See More from ${upcatname}</a></div>`
       main.insertAdjacentHTML("beforeend", sitelink);
 
     });
