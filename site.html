@@ -151,16 +151,17 @@ document.head.appendChild(src);
         let lcontentval = contentval.split(' ').join('+');
         let contenthtml = `
   <div class= "child">
-    <div class="imgdiv">
-       <img src="${childdata["image"]}" alt="${contentval}">
-    </div>
-    <div class="details">
-      <p class="title">${contentval}</p>
-      <p class="prc">${childdata["price"]}</p>
-      <button><a href="details?site=${sitename}&category=${lcat}&title=${lheadname}&name=${lcontentval}" title="View Details of ${contentval}">View Details</a></button>
-    </div>
-    
-  </div>
+                <a href="details.html?site=${sitename}&category=${lcat}&title=${lheadname}&name=${lcontentval}" title="View Details of ${contentval}">
+                <div class="imgdiv">
+                  <img src="${childdata["image"]}" alt="${contentval}">
+                </div>
+                <div class="details">
+                  <p class="title">${contentval}</p>
+                  <p class="prc">${childdata["price"]}</p>
+               <!--   <button><a href="details.html?site=${sitename}&category=${lcat}&title=${lheadname}&name=${lcontentval}" title="View Details of ${contentval}">View Details</a></button> -->
+                </div>
+              </a>
+              </div>
   `
         let parser = new DOMParser();
         let elem = parser.parseFromString(contenthtml, 'text/html').body.firstChild
