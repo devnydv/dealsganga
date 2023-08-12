@@ -232,6 +232,11 @@ font-weight: bolder;
 .child_description .child{
   width: inherit;
 }
+
+.child_description .child .details{
+  margin: 20px;
+}
+
 .details .title {
  
   font-size: 18px;
