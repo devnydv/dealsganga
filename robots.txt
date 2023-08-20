@@ -6,3 +6,4 @@ User-agent: *
 Disallow: 
 Disallow: /create
 Sitemap: https://lowoncost.xyz/sitemap.xml
+Disallow: https://lowoncost.xyz/product/
