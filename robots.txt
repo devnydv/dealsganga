@@ -7,3 +7,4 @@ Disallow:
 Disallow: /create
 Sitemap: https://lowoncost.xyz/sitemap.xml
 Disallow: https://lowoncost.xyz/product/
+Disallow:https://lowoncost.xyz/product/realme-narzo-30-5g-racing-blue-128-gb/p/site.html?name=flipkart
