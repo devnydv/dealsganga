@@ -97,7 +97,7 @@
         console.log(title);
         let contenthtml = `
   <div class= "child">
-    <a href="site.html?name=${catname}&category=${ncategory}" title="View details of ${contentval}">
+    <a href="/site?name=${catname}&category=${ncategory}" title="View details of ${contentval}">
     <div class="imgdiv">
        <img src="${childdata["image"]}" alt=${contentval}>
     </div>
@@ -121,7 +121,7 @@
 
       main.appendChild(childin);
       let sitelink = `<div class="sitelink">
-        <a href="site.html?name=${catname}" title="See More from ${catname}">See More from ${upcatname}</a></div>`
+        <a href="/site?name=${catname}" title="See More from ${catname}">See More from ${upcatname}</a></div>`
       main.insertAdjacentHTML("beforeend", sitelink);
 
     });
