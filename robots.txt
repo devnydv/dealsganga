@@ -8,3 +8,12 @@ Disallow: /create
 Sitemap: https://lowoncost.xyz/sitemap.xml
 Disallow: https://lowoncost.xyz/product/
 Disallow:https://lowoncost.xyz/product/realme-narzo-30-5g-racing-blue-128-gb/p/site.html?name=flipkart
+Disallow:https://lowoncost.xyz/site.html?name=amazon&category=Audio
+Disallow:https://lowoncost.xyz/details.html?site=amazon&category=Electronics&title=Laptops+and+Accessories+&name=Thin+and+light+laptops
+Disallow:https://lowoncost.xyz/details.html?site=flipkart&category=Electronics&title=Mobile+and+Accesories&name=Screen+Guards
+Disallow:https://lowoncost.xyz/details.html?site=amazon&category=Electronics&title=Mobiles+and+Accessories&name=Mounts+and+Stands
+Disallow:https://lowoncost.xyz/details.html?site=ajio&category=Kids&title=Boys+Wear&name=Denims+and+Trousers
+Disallow:https://lowoncost.xyz/details.html?site=amazon&category=Electronics&title=Laptops+and+Accessories+&name=Budget+laptops
+Disallow:https://lowoncost.xyz/details.html?site=amazon&category=Home&title=Cookware&name=Cookware+Sets
+Disallow:https://lowoncost.xyz/details.html?site=ajio&category=Indie&title=Clothing&name=Kurtas
+Disallow:https://lowoncost.xyz/details.html
