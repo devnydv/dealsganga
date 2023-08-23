@@ -151,7 +151,7 @@ document.head.appendChild(src);
         let lcontentval = contentval.split(' ').join('+');
         let contenthtml = `
   <div class= "child">
-                <a href="details.html?site=${sitename}&category=${lcat}&title=${lheadname}&name=${lcontentval}" title="View Details of ${contentval}">
+                <a href="/details?site=${sitename}&category=${lcat}&title=${lheadname}&name=${lcontentval}" title="View Details of ${contentval}">
                 <div class="imgdiv">
                   <img src="${childdata["image"]}" alt="${contentval}">
                 </div>
@@ -179,7 +179,7 @@ arra = contentkey;
           "@type": "ListItem",
           "position": i,
           "name": `${rename}`,
-          "url": `https://lowoncost.xyz/details.html?site=${sitename}&category=${lcat}&title=${lheadname}&name=${rename}`
+          "url": `https://lowoncost.xyz/details?site=${sitename}&category=${lcat}&title=${lheadname}&name=${rename}`
         };
        
       }
