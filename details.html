@@ -49,7 +49,7 @@
   let name = param.get('name');
 
   //seo for the site creation of meta and title tag
-  document.title = ` Grab the Deal on ${name} from ${sitename} `;
+  document.title = ` Grab the Deals on ${name} from ${sitename} `;
   let meta = document.querySelector('meta[name="description"]');
   meta.setAttribute("content", `Best link to buy ${name} from ${sitename} . Just click on link and see the lowest priced products`);
 
@@ -73,7 +73,7 @@
        <img src="${data["image"]}" alt="${name}">
     </div>
     <div class="details">
-      <h1 class="title">Lowest priced ${name} from ${sitename}</h1>
+      <h1 class="title">Best Deals on ${name} from ${sitename}</h1>
       <p class="prc">${data["price"]}</p>
      <button><a href="${data["link"]}" target="_blanck" title="View Items on ${sitename}">View Items on ${sitename}</a></button>
     </div>
