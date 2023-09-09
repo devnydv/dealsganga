@@ -98,10 +98,25 @@ ol li a{
   margin-top: 8px;
   margin-bottom: 8px;
 }
+
 #head{
   text-align: center;
   font-size: 22px;
 }
+#desc-div{
+  text-align: justify;
+  
+}
+#desc {
+  margin-top: 8px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 500;
+}
+
+
+
 #main  h2{
   text-align: center;
   font-size: 20px;
@@ -277,6 +292,10 @@ font-weight: bolder;
 
 
 @media(max-width: 500px) {
+  #desc {
+    width: 90%;
+    
+  }
   #main {
     width: 100%;
     padding: 0px;
