@@ -64,14 +64,7 @@
     //let headertxt = `<h2>${title}</h2>`
     //main.insertAdjacentHTML("beforeend", headertxt)
     let childin = document.createElement('div')
-    let insetdetails;
-
-  if(data["desc"] !== undefined){
- insetdetails=`
-    <span>${data["desc"]}</span>`;
-  }else{
-    insetdetails=``;
-  }
+    
 
     childin.className = 'child_details';
     let contenthtml = `
@@ -84,13 +77,20 @@
       <h1 class="title">Best Deals on ${name} from ${sitename}</h1>
       <p class="prc">${data["price"]}</p>
      <button><a href="${data["link"]}" target="_blanck" title="View Items on ${sitename}">View Items on ${sitename}</a></button>
-     ${insetdetails}
+     
      </div>
   
   
   </div>
   `
-  
+  let insetdetails;
+
+  if(data["desc"] !== undefined){
+ insetdetails=`<h2 class="title"> Top best ${name} from ${sitename}</h2>
+    <span>${data["desc"]}</span>`;
+  }else{
+    insetdetails=``;
+  }
   
 let childdetails = document.createElement('div')
     childdetails.className = 'child_description';
@@ -108,7 +108,7 @@ let childdetails = document.createElement('div')
       <button><a href="site.html?name=ajio">Ajio</a></button>
       <button><a href="site.html?name=myntra">Myntra</a></button> -->
       
-      
+      ${insetdetails}
     </div>
   </div>
   
